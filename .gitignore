@@ -1,0 +1,16 @@
+# ignorar arquios do apache
+access.log
+error.log
+errors.log
+
+#
+.directory
+webroot/.directory
+
+# ignorar todos os diretório e arquivos temporários
+tmp/**/*
+
+#
+logs/**/*
+
+
