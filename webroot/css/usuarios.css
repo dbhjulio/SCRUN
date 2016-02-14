@@ -1,0 +1,10 @@
+#divLogin {
+    margin: 0px auto;
+    width: 300px;
+    min-height: 150px;
+    padding: 15px 10px;
+}
+
+#divLogin input {
+    margin-top: 5px;
+}
