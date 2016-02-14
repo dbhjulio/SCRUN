@@ -12,7 +12,7 @@
     <?= $this->Form->create('Usuario',['url'=>['action'=>'enviar_senha']]); ?>
 
     <div class='top10'>
-        <strong>Entre com seu e-mail:</strong> 
+        <strong>Entre com seu e-mail:</strong>
     </div>
     <div>
     <?= $this->Form->input('Usuarios.email',['class'=>'form-control','label'=>false,'placeholder'=>'e-mail']); ?>
@@ -31,6 +31,7 @@
             'type'  => 'button',
             'label' => false,
             'id'    => 'btFechar',
+            'onclick'=>'document.location.href=\''.$this->request->site.'/'.$this->request->cadastro.'/login\'',
             'class' => 'btn btn-close']); ?>
         </div>
     </div>
