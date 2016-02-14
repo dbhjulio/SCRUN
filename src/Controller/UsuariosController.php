@@ -68,9 +68,7 @@ class UsuariosController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
-        $usuario = $this->Usuarios->get($id, [
-            'contain' => ['Perfis']
-        ]);
+        $usuario = $this->Usuarios->get($id,['contain' => ['Perfis']]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
             if ($this->Usuarios->save($usuario)) {
@@ -154,7 +152,7 @@ class UsuariosController extends AppController {
      *
      */
     public function ativarAssinante() {
-
+        //
     }
 
     /**

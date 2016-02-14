@@ -17,8 +17,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $modificado
  * @property \App\Model\Entity\Perfi[] $perfis
  */
-class Usuario extends Entity
-{
+class Usuario extends Entity {
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -30,7 +29,22 @@ class Usuario extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false,
+        '*'     => true,
+        'id'    => false,
     ];
+
+    /**
+     * Descrição do status
+     */
+    protected $_status_descricao = ['status_descricao'];
+
+    /**
+     * Retorna o valor por extenso do campo Status
+     *
+     * @return  string;
+     */
+    protected function _getStatusDescricao() {
+        $arrSN = [1=>'Sim', 0=>'Não'];
+        return $arrSN[$this->_properties['status']];
+    }
 }

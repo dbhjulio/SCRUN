@@ -32,3 +32,7 @@
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+<?php
+    /*pr($usuario);
+    pr($this->viewVars['usuario']);*/
+?>

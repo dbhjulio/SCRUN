@@ -83,4 +83,65 @@ class AppController extends Controller {
         $this->viewBuilder()->layout('ajax');
     }
 
+    /**
+     * Método Editar
+     *
+     * @param   string|null     $id Model id.
+     * @return \Cake\Network\Response|void  Redireciona em caso de sucesso.
+     * @throws \Cake\Network\Exception\NotFoundException Quando o registro não é localizado.
+     */
+    public function editar($id = null) {
+        // variáveis locais
+        $modelClass = $this->modelClass;
+        $retorno    = ['action'=>'index'];
+        $containers = [];
+
+        // definindo o layout e o template usar
+        $this->viewBuilder()->layout('admin');
+        $this->viewBuilder()->templatePath('Element');
+
+        // recuperando o esquema
+        $esquema = $this->$modelClass->schema();
+        //debug($esquema);
+
+        // recuperando as associaçoes
+        $associacoes = $this->$modelClass->associations();
+        $arrAssociacoes = [];
+        if (!empty($associacoes)) {
+            foreach($associacoes->keys() as $_l => $_key) {
+                $associacao = getLastId(get_class($associacoes->get($_key)));
+                switch($associacao) {
+                    case 'belongstomany':
+                        if (!isset($containers['contain'])) {
+                            $containers['contain'] = [];
+                        }
+                        $containers['contain'][] = ucfirst($_key);
+                    break;
+                }
+            }
+        }
+
+        // recuperando a entidade
+        if (!empty($id)) { // alteraçao
+            $entidade = $this->$modelClass->get($id,$containers);
+        } else {
+            $entidade = $this->$modelClass->newEntity();
+        }
+        $nomeEntidade   = getLastId($this->$modelClass->entityClass());
+
+        // se o formulário foi postado
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $entidade = $this->$modelClass->patchEntity($entidade, $this->request->data);
+            if ($this->$modelClass->save($entidade)) {
+                $this->Flash->sucess('O Registro foi salvo com sucesso ...');
+                return $this->redirect($retorno);
+            } else {
+                $this->Flash->error('Erro ao tentar atualizar registro !!!');
+            }
+        }
+
+        // atualiazando a view
+        $this->viewVars[$nomeEntidade] = $entidade;
+        $this->set(compact('_serialize','modelClass','nomeEntidade'));
+    }
 }

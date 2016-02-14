@@ -13,8 +13,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Municipios
  * @property \Cake\ORM\Association\BelongsToMany $Perfis
  */
-class UsuariosTable extends Table
-{
+class UsuariosTable extends Table {
 
     /**
      * Initialize method
@@ -22,13 +21,13 @@ class UsuariosTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->table('usuarios');
-        $this->displayField('id');
+        $this->displayField('nome');
         $this->primaryKey('id');
+        $this->entityClass('App\Model\Entity\Usuario');
 
         $this->belongsTo('Municipios', [
             'foreignKey' => 'municipio_id',

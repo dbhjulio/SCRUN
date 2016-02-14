@@ -14,4 +14,5 @@ return array(
     $vendorDir . '/cakephp/cakephp/src/Utility/bootstrap.php',
     $vendorDir . '/symfony/var-dumper/Resources/functions/dump.php',
     $vendorDir . '/psy/psysh/src/Psy/functions.php',
+    $vendorDir . '/utilidades/Util.php',
 );
