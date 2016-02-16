@@ -23,9 +23,6 @@ class CrudComponent extends Component {
 	public function initialize(array $config) {
         $this->_Controller = $this->_registry->getController();
 
-        // definindo o layout padrão
-        $this->_Controller->viewBuilder()->layout('CrudMoura.publico');
-
         // descobrindo a url do site completa
         $site = $this->_Controller->request->env('REQUEST_SCHEME')
             .'://'.$this->_Controller->request->env('HTTP_HOST')
@@ -35,6 +32,8 @@ class CrudComponent extends Component {
             $cadastro .= $this->_Controller->request->params['plugin'];
         }
         $cadastro .= $this->_Controller->request->params['controller'];
+
+		// populando o controller e a view com os dados do site e cadastro corrente.
         $this->_Controller->request->site = $site;
         $this->_Controller->request->cadastro = strtolower($cadastro);
 	}
@@ -51,10 +50,6 @@ class CrudComponent extends Component {
         ) {
             $this->_Controller->set('_serialize', true);
         }
-
-		// definindo o layout e o template a usar
-        $this->_Controller->viewBuilder()->layout('admin')->plugin('CrudMoura');
-        $this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
     }
 
 /**
@@ -66,6 +61,10 @@ class CrudComponent extends Component {
 		// variáveis locais
         $modelClass = $this->_Controller->modelClass;
 		$tituloPagina = 'Listando '.$this->_Controller->name;
+
+		// definindo o layout padrão e caminho da view
+        $this->_Controller->viewBuilder()->layout('CrudMoura.admin');
+		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
 
 		$this->_Controller->set(compact('tituloPagina'));
 	}
@@ -82,6 +81,10 @@ class CrudComponent extends Component {
         $modelClass = $this->_Controller->modelClass;
         $retorno    = ['action'=>'index'];
         $containers = [];
+
+		// definindo o layout padrão e caminho da view
+        $this->_Controller->viewBuilder()->layout('CrudMoura.admin');
+		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
 
         // recuperando o esquema
         $esquema = $this->_Controller->$modelClass->schema();
@@ -133,11 +136,14 @@ class CrudComponent extends Component {
  *
  * @return  void
  */
-	public function respostaJson() {
-	    $resposta = $this->_Controller->Session->check('Resposta.Json')
+ 	public function respostaJson() {
+		// definindo o layout padrão e caminho da view
+        $this->_Controller->viewBuilder()->layout('CrudMoura.admin');
+		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
+ 		$resposta = $this->_Controller->Session->check('Resposta.Json')
 	        ? $this->_Controller->Session->check('Resposta.Json')
 	        : array();
+
 	    $this->_Controller->set(compact('resposta'));
-	    $this->_Controller->viewBuilder()->layout('ajax');
 	}
 }
