@@ -3,6 +3,9 @@ access.log
 error.log
 errors.log
 
+# ignorar app
+config/app.php
+
 #
 .directory
 webroot/.directory
