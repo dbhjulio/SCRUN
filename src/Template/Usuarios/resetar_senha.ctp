@@ -8,7 +8,7 @@
 ?>
 
 <br /><br /><br /><br />
-<div class='row-fluid redondo10 borda2 pad10 wid500'>
+<div class='row-fluid fundo1 redondo10 borda2 pad10 wid500'>
     <?= $this->Form->create('Usuario',['url'=>['action'=>'enviar_senha']]); ?>
 
     <div class='top10'>

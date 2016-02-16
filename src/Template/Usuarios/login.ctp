@@ -21,7 +21,7 @@
         <div class="col-md-9">
             <a href='<?= $this->request->base ?>/usuarios/resetar_senha'>Esqueci a senha</a>
             <br />
-            <a href='<?= $this->request->base ?>/usuarios/novo_assinante'>Cadatrar</a>
+            <a href='<?= $this->request->base ?>/usuarios/novo_assinante'>Cadastrar</a>
         </div>
     </div>
 <?= $this->Form->end(); ?>
