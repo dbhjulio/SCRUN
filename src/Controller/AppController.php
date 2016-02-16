@@ -24,11 +24,10 @@ use Cake\Event\Event;
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-
-    /**
-     * Inicialização do AppController
-     * @return void
-     */
+/**
+ * Inicialização do AppController
+ * @return void
+ */
     public function initialize() {
         parent::initialize();
 
@@ -37,13 +36,40 @@ class AppController extends Controller {
         $this->loadComponent('CrudMoura.Crud');
     }
 
-    /**
-     * Exibe a tela de edição do cadastro corrente.
-     *
-     * @return  void
-     */
+/**
+ * Exibe a tela inicial do cadastro corrente
+ *
+ * @return  void
+ */
+    public function index() {
+        $this->Crud->index();
+    }
+
+/**
+ * Exibe a tela de edição do cadastro corrente.
+ *
+ * @return  void
+ */
     public function editar($id=0) {
         $this->Crud->editar($id);
+    }
+
+/**
+ * Exibe a tela de inclusão do cadastro corrente.
+ *
+ * @return  void
+ */
+    public function novo() {
+        $this->Crud->novo();
+    }
+
+/**
+ * Exibe a tela de exclusão do cadastro corrente.
+ *
+ * @return  void
+ */
+    public function excluir($id=0) {
+        $this->Crud->excluir($id);
     }
 
 }

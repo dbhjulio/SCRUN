@@ -51,37 +51,37 @@ class CrudComponent extends Component {
         ) {
             $this->_Controller->set('_serialize', true);
         }
+
+		// definindo o layout e o template a usar
+        $this->_Controller->viewBuilder()->layout('admin')->plugin('CrudMoura');
+        $this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
     }
 
-    /**
-     * Exibe a resposta json
-     *
-     * @return  void
-     */
-    public function respostaJson() {
-        $resposta = $this->_Controller->Session->check('Resposta.Json')
-            ? $this->_Controller->Session->check('Resposta.Json')
-            : array();
-        $this->_Controller->set(compact('resposta'));
-        $this->_Controller->viewBuilder()->layout('ajax');
-    }
+/**
+ * Exibe a tela inicial do cadastro corrente.
+ *
+ * @return 	void
+ */
+ 	public function index() {
+		// variáveis locais
+        $modelClass = $this->_Controller->modelClass;
+		$tituloPagina = 'Listando '.$this->_Controller->name;
 
-    /**
-     * Método Editar
-     *
-     * @param   string|null     $id Model id.
-     * @return \Cake\Network\Response|void  Redireciona em caso de sucesso.
-     * @throws \Cake\Network\Exception\NotFoundException Quando o registro não é localizado.
-     */
+		$this->_Controller->set(compact('tituloPagina'));
+	}
+
+/**
+ * Método Editar
+ *
+ * @param   string|null     $id Model id.
+ * @return \Cake\Network\Response|void  Redireciona em caso de sucesso.
+ * @throws \Cake\Network\Exception\NotFoundException Quando o registro não é localizado.
+ */
     public function editar($id = null) {
         // variáveis locais
         $modelClass = $this->_Controller->modelClass;
         $retorno    = ['action'=>'index'];
         $containers = [];
-
-        // definindo o layout e o template usar
-        $this->_Controller->viewBuilder()->layout('admin')->plugin('CrudMoura');
-        $this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
 
         // recuperando o esquema
         $esquema = $this->_Controller->$modelClass->schema();
@@ -127,4 +127,17 @@ class CrudComponent extends Component {
         $tituloPagina = 'Editanto '.$this->_Controller->name;
         $this->_Controller->set(compact('tituloPagina','_serialize','modelClass','nomeEntidade'));
     }
+
+/**
+ * Exibe a resposta json
+ *
+ * @return  void
+ */
+	public function respostaJson() {
+	    $resposta = $this->_Controller->Session->check('Resposta.Json')
+	        ? $this->_Controller->Session->check('Resposta.Json')
+	        : array();
+	    $this->_Controller->set(compact('resposta'));
+	    $this->_Controller->viewBuilder()->layout('ajax');
+	}
 }

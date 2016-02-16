@@ -24,13 +24,13 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'Scrun';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->script('jquery-2.2.0.min.js') ?>
-    <?= $this->Html->script('publico.js') ?>
-    <?= $this->Html->script('geral.js') ?>
+    <?= $this->Html->script('CrudMoura/jquery-2.2.0.min.js') ?>
+    <?= $this->Html->script('CrudMoura/publico.js') ?>
+    <?= $this->Html->script('CrudMoura/geral.js') ?>
 
-    <?= $this->Html->css('reset.css') ?>
-    <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('publico.css') ?>
+    <?= $this->Html->css('CrudMoura/reset.css') ?>
+    <?= $this->Html->css('CrudMoura/bootstrap.min.css') ?>
+    <?= $this->Html->css('CrudMoura/publico.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
