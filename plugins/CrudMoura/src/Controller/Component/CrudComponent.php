@@ -124,6 +124,7 @@ class CrudComponent extends Component {
 
         // atualiazando a view
         $this->_Controller->viewVars[$nomeEntidade] = $entidade;
-        $this->_Controller->set(compact('_serialize','modelClass','nomeEntidade'));
+        $tituloPagina = 'Editanto '.$this->_Controller->name;
+        $this->_Controller->set(compact('tituloPagina','_serialize','modelClass','nomeEntidade'));
     }
 }
