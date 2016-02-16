@@ -59,14 +59,18 @@ class CrudComponent extends Component {
  */
  	public function index() {
 		// variáveis locais
-        $modelClass = $this->_Controller->modelClass;
-		$tituloPagina = 'Listando '.$this->_Controller->name;
+        $modelClass 	= $this->_Controller->modelClass;
+		$tituloPagina 	= 'Listando '.$this->_Controller->name;
+		$tituloLista 	= 'Listando '.$this->_Controller->name;
+
+		// recuperando a página
+		$this->_Controller->request->data = $this->_Controller->paginate($modelClass);
 
 		// definindo o layout padrão e caminho da view
-        $this->_Controller->viewBuilder()->layout('CrudMoura.admin');
 		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
 
-		$this->_Controller->set(compact('tituloPagina'));
+		// populando a view
+		$this->_Controller->set(compact('tituloPagina','tituloLista'));
 	}
 
 /**
@@ -78,12 +82,14 @@ class CrudComponent extends Component {
  */
     public function editar($id = null) {
         // variáveis locais
-        $modelClass = $this->_Controller->modelClass;
-        $retorno    = ['action'=>'index'];
-        $containers = [];
+		$tituloPagina 	= 'Editando '.$this->_Controller->name;
+		$tituloEdicao 	= 'Editando '.$this->_Controller->name;
+        $modelClass 	= $this->_Controller->modelClass;
+        $retorno    	= ['action'=>'index'];
+        $containers 	= [];
 
 		// definindo o layout padrão e caminho da view
-        $this->_Controller->viewBuilder()->layout('CrudMoura.admin');
+        //$this->_Controller->viewBuilder()->layout('CrudMoura.admin');
 		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
 
         // recuperando o esquema
@@ -128,7 +134,7 @@ class CrudComponent extends Component {
         // atualiazando a view
         $this->_Controller->viewVars[$nomeEntidade] = $entidade;
         $tituloPagina = 'Editanto '.$this->_Controller->name;
-        $this->_Controller->set(compact('tituloPagina','_serialize','modelClass','nomeEntidade'));
+        $this->_Controller->set(compact('tituloEdicao','tituloPagina','_serialize','modelClass','nomeEntidade'));
     }
 
 /**
@@ -138,7 +144,7 @@ class CrudComponent extends Component {
  */
  	public function respostaJson() {
 		// definindo o layout padrão e caminho da view
-        $this->_Controller->viewBuilder()->layout('CrudMoura.admin');
+        //$this->_Controller->viewBuilder()->layout('CrudMoura.admin');
 		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
  		$resposta = $this->_Controller->Session->check('Resposta.Json')
 	        ? $this->_Controller->Session->check('Resposta.Json')

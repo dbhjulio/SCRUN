@@ -212,3 +212,4 @@ Type::build('datetime')
     ->useLocaleParser();
 
 Plugin::load('CrudMoura', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('MouraTheme');

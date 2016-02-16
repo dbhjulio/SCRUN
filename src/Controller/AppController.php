@@ -37,6 +37,15 @@ class AppController extends Controller {
     }
 
 /**
+ * Executa código antes da renderização da view.
+ *
+ * @return  void
+ */
+     public function beforeRender(\Cake\Event\Event $event) {
+         $this->viewBuilder()->theme('MouraTheme');
+     }
+
+/**
  * Exibe a tela inicial do cadastro corrente
  *
  * @return  void

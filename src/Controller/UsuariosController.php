@@ -11,12 +11,14 @@ class UsuariosController extends AppController {
      * Exibe a tela de login
      */
     public function login () {
+        //
     }
 
     /**
      * Exibe a tela de resetar a senha
      */
     public function resetarSenha () {
+        //
     }
 
     /**
