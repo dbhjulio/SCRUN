@@ -3,20 +3,20 @@
     echo $this->Html->script('CrudMoura.listar',['inline'=>false]);
 
 ?>
-<div class="container-fluid clearfix">
-    <div class='row-fluid clearfix lista-titulo'>
+<div class="div-lista">
+    <div class="lista-titul">
         <h1><?php echo $tituloLista ?></h1>
     </div>
 
-    <div class='row-fluid clearfix lista-ferramentas'>
+    <div class="lista-ferramentas">
         ...
     </div>
 
-    <div class='row-fluid clearfix lista-filtros'>
+    <div class="lista-filtros">
         ...
     </div>
 
-    <div class='row-fluid clearfix lista-linhas'>
+    <div class="lista-linhas">
         ...
     </div>
 

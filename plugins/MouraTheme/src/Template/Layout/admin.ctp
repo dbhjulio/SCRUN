@@ -25,10 +25,11 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
     <?= $this->Html->script('/MouraTheme/js/jquery-2.2.0.min.js') ?>
     <?= $this->Html->script('/MouraTheme/js/default.js') ?>
     <?= $this->Html->script('/MouraTheme/js/geral.js') ?>
+    <?= $this->Html->script('/MouraTheme/js/admin.js') ?>
 
     <?= $this->Html->css('/MouraTheme/css/reset.css') ?>
     <?= $this->Html->css('/MouraTheme/css/bootstrap.min.css') ?>
-    <?= $this->Html->css('/MouraTheme/css/publico.css') ?>
+    <?= $this->Html->css('/MouraTheme/css/admin.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -37,12 +38,23 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
 </head>
 
 <body>
-    <?= $this->Flash->render() ?>
+<div class="corpo">
+    <div class="row-fluid cabecalho">
+      <div class="col-xs-24 col-md-2">
+          <a href="<?php echo $this->request->site ?>">Cabecalho 1</a>
+      </div>
+      <div class="col-xs-24 col-md-10">Cabecalho 2</div>
+    </div>
 
-    <section class="container clearfix">
-        <?= $this->fetch('content') ?>
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row-fluid pagina">
+      <div id='barra-esquerda' class="col-xs-12 col-md-2">Menu da Esquerda</div>
+      <div id='conteudo' class="col-xs-12 col-md-10">
+          <?= $this->fetch('content') ?>
+      </div>
+    </div>
 
-    </section>
+</div><!-- fim corpo -->
 
 </body>
-</html><!-- fim layout do tema MouraTheme -->
+</html><!-- fim layout MouraTheme.admin -->

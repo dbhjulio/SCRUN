@@ -1,1 +1,30 @@
- 
+.corpo {
+    min-width: 600px;
+}
+.cabecalho {
+    line-height: 40px;
+}
+.cabecalho a {
+    color: #fff;
+    text-decoration: none;
+}
+.cabecalho div:nth-child(1) {
+    background-color: #367FA9;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+.cabecalho div:nth-child(2) {
+    background-color: #3C8DBC;
+    height: auto;
+}
+.pagina {
+    min-height: 500px;
+    background-color: #aaa;
+}
+#barra-esquerda {
+    background-color: #222D32;
+}
+#conteudo {
+    background-color: #ECF0F5;
+}

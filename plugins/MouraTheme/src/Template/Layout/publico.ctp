@@ -24,11 +24,14 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'Scrun';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->script('jquery-2.2.0.min.js') ?>
-    <?= $this->Html->script('default.js') ?>
+    <?= $this->Html->script('/MouraTheme/js/jquery-2.2.0.min.js') ?>
+    <?= $this->Html->script('/MouraTheme/js/publico.js') ?>
+    <?= $this->Html->script('/MouraTheme/js/geral.js') ?>
+    <?= $this->Html->script('/MouraTheme/js/publico.js') ?>
 
-    <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('default.css') ?>
+    <?= $this->Html->css('/MouraTheme/css/reset.css') ?>
+    <?= $this->Html->css('/MouraTheme/css/bootstrap.min.css') ?>
+    <?= $this->Html->css('/MouraTheme/css/publico.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

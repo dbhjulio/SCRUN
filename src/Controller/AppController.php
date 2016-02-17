@@ -34,16 +34,9 @@ class AppController extends Controller {
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('CrudMoura.Crud');
-    }
 
-/**
- * Executa código antes da renderização da view.
- *
- * @return  void
- */
-     public function beforeRender(\Cake\Event\Event $event) {
-         $this->viewBuilder()->theme('MouraTheme');
-     }
+        $this->viewBuilder()->theme('MouraTheme')->layout('publico');
+    }
 
 /**
  * Exibe a tela inicial do cadastro corrente
@@ -51,6 +44,7 @@ class AppController extends Controller {
  * @return  void
  */
     public function index() {
+        $this->viewBuilder()->theme('MouraTheme')->layout('admin');
         $this->Crud->index();
     }
 
@@ -60,6 +54,7 @@ class AppController extends Controller {
  * @return  void
  */
     public function editar($id=0) {
+        $this->viewBuilder()->theme('MouraTheme')->layout('admin');
         $this->Crud->editar($id);
     }
 
@@ -69,6 +64,7 @@ class AppController extends Controller {
  * @return  void
  */
     public function novo() {
+        $this->viewBuilder()->theme('MouraTheme')->layout('admin');
         $this->Crud->novo();
     }
 
@@ -78,6 +74,7 @@ class AppController extends Controller {
  * @return  void
  */
     public function excluir($id=0) {
+        $this->viewBuilder()->theme('MouraTheme')->layout('admin');
         $this->Crud->excluir($id);
     }
 
