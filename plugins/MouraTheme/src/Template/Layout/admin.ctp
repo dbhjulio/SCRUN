@@ -23,7 +23,8 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->script('/MouraTheme/js/jquery-2.2.0.min.js') ?>
-    <?= $this->Html->script('/MouraTheme/js/default.js') ?>
+    <?= $this->Html->script('/MouraTheme/js/bootstrap.min.js'); ?>
+    <?= $this->Html->script('/MouraTheme/js/admin.js') ?>
     <?= $this->Html->script('/MouraTheme/js/geral.js') ?>
     <?= $this->Html->script('/MouraTheme/js/admin.js') ?>
 
@@ -43,14 +44,17 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
       <div class="col-xs-24 col-md-2">
           <a href="<?php echo $this->request->site ?>">Cabecalho 1</a>
       </div>
-      <div class="col-xs-24 col-md-10">Cabecalho 2</div>
+      <div class="col-xs-24 col-md-10">Cabecalho 2 - layout MouraTheme.Admin</div>
     </div>
 
     <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
     <div class="row-fluid pagina">
-      <div id='barra-esquerda' class="col-xs-12 col-md-2">Menu da Esquerda</div>
+      <div id='barra-esquerda' class="col-xs-12 col-md-2">
+          <?php echo $this->element('MouraTheme.menu-drop-down',['menu'=>$menuEsquerdo]); ?>
+      </div>
       <div id='conteudo' class="col-xs-12 col-md-10">
           <?= $this->fetch('content') ?>
+
       </div>
     </div>
 
@@ -58,3 +62,4 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
 
 </body>
 </html><!-- fim layout MouraTheme.admin -->
+<?php debug($menuEsquerdo); ?>

@@ -1,5 +1,5 @@
 .corpo {
-    min-width: 600px;
+    min-width: 100px;
 }
 .cabecalho {
     line-height: 40px;
@@ -23,7 +23,12 @@
     background-color: #aaa;
 }
 #barra-esquerda {
-    background-color: #222D32;
+    --background-color: #222D32;
+    --color: #fff;
+    background-color: #fff;
+}
+#barra-esquerda a {
+    --color: #fff;
 }
 #conteudo {
     background-color: #ECF0F5;

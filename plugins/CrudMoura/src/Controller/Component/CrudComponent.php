@@ -66,11 +66,23 @@ class CrudComponent extends Component {
 		// recuperando a página
 		$this->_Controller->request->data = $this->_Controller->paginate($modelClass);
 
+		// recuperando as opções de menu da esquerda
+		$menuEsquerdo['menu1']['0']['label'] = 'Opçao1';
+		$menuEsquerdo['menu1']['0']['link'] 	= $this->base.'/opcao1';
+		$menuEsquerdo['menu1']['1']['label'] = 'Opçao 2';
+		$menuEsquerdo['menu1']['1']['link'] 	= $this->base.'/opcao2';
+		$menuEsquerdo['menu2']['0']['label'] = 'Opçao1';
+		$menuEsquerdo['menu2']['0']['link'] 	= $this->base.'/opcao1';
+		$menuEsquerdo['menu3']['1']['label'] = 'Opçao 2';
+		$menuEsquerdo['menu3']['1']['link'] 	= $this->base.'/opcao2';
+		$menuEsquerdo['menu3']['2']['label'] = 'Opçao 3';
+		$menuEsquerdo['menu3']['2']['link'] 	= $this->base.'/opcao3';
+
 		// definindo o layout padrão e caminho da view
 		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');
 
 		// populando a view
-		$this->_Controller->set(compact('tituloPagina','tituloLista'));
+		$this->_Controller->set(compact('tituloPagina','tituloLista','menuEsquerdo'));
 	}
 
 /**
