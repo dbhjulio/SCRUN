@@ -28,8 +28,8 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
     <?= $this->Html->script('/MouraTheme/js/geral.js') ?>
     <?= $this->Html->script('/MouraTheme/js/admin.js') ?>
 
-    <?= $this->Html->css('/MouraTheme/css/reset.css') ?>
     <?= $this->Html->css('/MouraTheme/css/bootstrap.min.css') ?>
+    <?= $this->Html->css('/MouraTheme/css/reset.css') ?>
     <?= $this->Html->css('/MouraTheme/css/admin.css') ?>
 
     <?= $this->fetch('meta') ?>
@@ -62,4 +62,3 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
 
 </body>
 </html><!-- fim layout MouraTheme.admin -->
-<?php debug($menuEsquerdo); ?>

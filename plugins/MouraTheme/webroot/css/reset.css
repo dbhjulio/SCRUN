@@ -54,3 +54,37 @@
     margin: 0px auto;
     display: table;
 }
+
+.menu-sanfona-vertical {
+  color: #fff;
+}
+.menu-sanfona-vertical .menu-titulo {
+  cursor: pointer;
+  padding: 3px 1px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+.menu-sanfona-vertical a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.menu-sanfona-vertical .menu-itens {
+  background-color: #2C3B41;
+  /*display: none;*/
+}
+.menu-sanfona-vertical .menu-itens a {
+  margin: 0px 0px 0px 5px;
+  color: #aaa;
+}
+.menu-sanfona-vertical .menu-itens a:before {
+  content: "\f10c";
+  margin: 0px 3px 0px 0px;
+}
+.menu-sanfona-vertical .menu-itens a:hover {
+  color: #fff;
+}

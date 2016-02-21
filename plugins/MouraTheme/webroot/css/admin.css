@@ -3,6 +3,7 @@
 }
 .cabecalho {
     line-height: 40px;
+    color: #fff;
 }
 .cabecalho a {
     color: #fff;
@@ -19,17 +20,20 @@
     height: auto;
 }
 .pagina {
-    min-height: 500px;
-    background-color: #aaa;
+    min-height: 100px;
+    background-color: #ccc;
 }
 #barra-esquerda {
-    --background-color: #222D32;
-    --color: #fff;
-    background-color: #fff;
+    background-color: #222D32;
+    min-height: 200px;
 }
 #barra-esquerda a {
     --color: #fff;
 }
+#barra-esquerda .panel-default {
+  border-color: none;
+}
 #conteudo {
     background-color: #ECF0F5;
+    min-height: 100px;
 }

@@ -67,16 +67,29 @@ class CrudComponent extends Component {
 		$this->_Controller->request->data = $this->_Controller->paginate($modelClass);
 
 		// recuperando as opções de menu da esquerda
-		$menuEsquerdo['menu1']['0']['label'] = 'Opçao1';
-		$menuEsquerdo['menu1']['0']['link'] 	= $this->base.'/opcao1';
-		$menuEsquerdo['menu1']['1']['label'] = 'Opçao 2';
-		$menuEsquerdo['menu1']['1']['link'] 	= $this->base.'/opcao2';
-		$menuEsquerdo['menu2']['0']['label'] = 'Opçao1';
-		$menuEsquerdo['menu2']['0']['link'] 	= $this->base.'/opcao1';
-		$menuEsquerdo['menu3']['1']['label'] = 'Opçao 2';
-		$menuEsquerdo['menu3']['1']['link'] 	= $this->base.'/opcao2';
-		$menuEsquerdo['menu3']['2']['label'] = 'Opçao 3';
-		$menuEsquerdo['menu3']['2']['link'] 	= $this->base.'/opcao3';
+		$menuEsquerdo['Cadastros']['0']['label'] 	= 'Usuários';
+		$menuEsquerdo['Cadastros']['0']['base'] 	= $this->_Controller->request->base;
+		$menuEsquerdo['Cadastros']['0']['link'] 	= '/usuarios';
+
+		$menuEsquerdo['Cadastros']['1']['label'] 	= 'Perfis';
+		$menuEsquerdo['Cadastros']['1']['base'] 	= $this->_Controller->request->base;
+		$menuEsquerdo['Cadastros']['1']['link'] 	= '/perfis';
+
+		$menuEsquerdo['Cadastros']['2']['label'] 	= 'Municípios';
+		$menuEsquerdo['Cadastros']['2']['base'] 	= $this->_Controller->request->base;
+		$menuEsquerdo['Cadastros']['2']['link'] 	= '/municipios';
+
+		$menuEsquerdo['Cadastros']['3']['label'] 	= 'Perfis';
+		$menuEsquerdo['Cadastros']['3']['base'] 	= $this->_Controller->request->base;
+		$menuEsquerdo['Cadastros']['3']['link'] 	= '/perfis';
+
+		$menuEsquerdo['Opções']['1']['label'] = 'Backup';
+		$menuEsquerdo['Opções']['1']['base'] 	= $this->_Controller->request->base;
+		$menuEsquerdo['Opções']['1']['link'] 	= '/backup';
+
+		$menuEsquerdo['Opções']['2']['label'] = 'Importação';
+		$menuEsquerdo['Opções']['2']['base'] 	= $this->_Controller->request->base;
+		$menuEsquerdo['Opções']['2']['link'] 	= '/importacao';
 
 		// definindo o layout padrão e caminho da view
 		$this->_Controller->viewBuilder()->templatePath('Element')->plugin('CrudMoura');

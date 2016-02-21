@@ -27,6 +27,23 @@ CREATE TABLE perfis (
  INDEX 			i_nome (nome ASC)
 );
 
+DROP TABLE IF EXISTS urls;
+CREATE TABLE urls (
+ id             INT                 NOT NULL AUTO_INCREMENT,
+ rota           VARCHAR(250)        NOT NULL,
+ status         INT                 NOT NULL DEFAULT 1,
+ menu_id        INT                 NOT NULL DEFAULT 0,
+ titulo_menu    VARCHAR(60)         NOT NULL,
+ icone          VARCHAR(60)         NOT NULL,
+ so_icone       INT(1)              NOT NULL DEFAULT 0,
+ posicao        VARCHAR(10)         NOT NULL,
+
+ PRIMARY KEY (id),
+ UNIQUE 		i_rota 				(rota ASC),
+ INDEX 	    	i_status 			(status ASC)
+);
+
+
 DROP TABLE IF EXISTS perfis_usuarios;
 CREATE TABLE perfis_usuarios (
  id 		INT 				NOT NULL AUTO_INCREMENT,
@@ -37,6 +54,27 @@ CREATE TABLE perfis_usuarios (
  FOREIGN    KEY         perfil_key(perfil_id) REFERENCES perfis(id),
  FOREIGN    KEY         usuario_key(usuario_id) REFERENCES usuarios(id)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+DROP TABLE IF EXISTS perfis_urls;
+CREATE TABLE perfis_urls (
+ id 		INT 				NOT NULL AUTO_INCREMENT,
+ perfil_id 	INT 				NOT NULL DEFAULT 0,
+ url_id	    INT 				NOT NULL DEFAULT 0,
+
+ PRIMARY 	KEY 		(id),
+ FOREIGN    KEY         perfil_fk(perfil_id) REFERENCES perfis(id),
+ FOREIGN    KEY         url_fk(url_id) REFERENCES urls(id)
+);
+
+DROP TABLE IF EXISTS menus;
+CREATE TABLE menus (
+ id             INT                 NOT NULL AUTO_INCREMENT,
+ descricao      VARCHAR(60)         NOT NULL,
+
+ PRIMARY KEY                    (id),
+ UNIQUE  i_descricao            (descricao ASC)
+);
+
 
 DROP TABLE IF EXISTS municipios;
 CREATE TABLE municipios (
@@ -66,3 +104,25 @@ INSERT INTO perfis_usuarios (usuario_id,perfil_id) VALUES (1,4);
 INSERT INTO perfis_usuarios (usuario_id,perfil_id) VALUES (2,2);
 INSERT INTO perfis_usuarios (usuario_id,perfil_id) VALUES (2,3);
 INSERT INTO perfis_usuarios (usuario_id,perfil_id) VALUES (2,4);
+
+INSERT INTO urls (rota,menu_id,titulo_menu,posicao) VALUES ('/',1,'Home','A');
+INSERT INTO urls (rota,menu_id,titulo_menu,posicao) VALUES ('/usuarios',1,'Menus','A');
+INSERT INTO urls (rota,menu_id,titulo_menu,posicao) VALUES ('/perfis',1,'Perfis','B');
+INSERT INTO urls (rota,menu_id,titulo_menu,posicao) VALUES ('/municipios',1,'Municípios','C');
+INSERT INTO urls (rota,menu_id,titulo_menu,posicao) VALUES ('/menus',1,'Menus','D');
+INSERT INTO urls (rota,menu_id,titulo_menu,posicao) VALUES ('/urls',1,'Urls','E');
+
+INSERT INTO menus (descricao) VALUES ('principal');
+
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (1,1);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (2,1);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (3,1);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (4,1);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (5,1);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (6,1);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (1,2);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (2,2);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (3,2);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (4,2);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (5,2);
+INSERT INTO perfis_urls (url_id,perfil_id) VALUES (6,2);

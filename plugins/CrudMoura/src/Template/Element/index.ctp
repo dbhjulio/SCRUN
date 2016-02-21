@@ -9,15 +9,15 @@
     </div>
 
     <div class="lista-ferramentas">
-        ...
+        ferramentas
     </div>
 
     <div class="lista-filtros">
-        ...
+        filtros
     </div>
 
     <div class="lista-linhas">
-        ...
+        linhas
     </div>
 
 </div>
