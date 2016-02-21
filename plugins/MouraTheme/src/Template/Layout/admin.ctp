@@ -50,7 +50,7 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
     <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
     <div class="row-fluid pagina">
       <div id='barra-esquerda' class="col-xs-12 col-md-2">
-          <?php echo $this->element('MouraTheme.menu-drop-down',['menu'=>$menuEsquerdo]); ?>
+          <?php echo $this->element('MouraTheme.menu-sanfona-vertical',['menu'=>$menuEsquerdo]); ?>
       </div>
       <div id='conteudo' class="col-xs-12 col-md-10">
           <?= $this->fetch('content') ?>
