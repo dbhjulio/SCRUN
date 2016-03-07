@@ -29,4 +29,30 @@ class Municipio extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    /**
+     * Retorna o Esquema
+     *
+     * @return  array;
+     */
+     public function getEsquema() {
+       $esquema = [
+         'id'        => [
+           'titulo'  => 'Código',
+         ],
+         'nome'      => [
+           'titulo'  => 'Nome',
+         ],
+         'uf'       => [
+           'titulo' => 'UF'
+         ],
+         'codi_estd'       => [
+           'titulo' => 'Código do Estado'
+         ],
+         'desc_estd' => [
+           'titulo'   => 'Estado'
+         ],
+       ];
+       return $esquema;
+     }
 }

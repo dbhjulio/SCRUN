@@ -1,18 +1,19 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Municipio;
+use App\Model\Entity\Perfi;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Municipios Model
+ * Perfis Model
  *
- * @property \Cake\ORM\Association\HasMany $Usuarios
+ * @property \Cake\ORM\Association\BelongsToMany $Urls
+ * @property \Cake\ORM\Association\BelongsToMany $Usuarios
  */
-class MunicipiosTable extends Table
+class PerfisTable extends Table
 {
 
     /**
@@ -25,13 +26,22 @@ class MunicipiosTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('municipios');
+        $this->table('perfis');
         $this->displayField('id');
         $this->primaryKey('id');
-        $this->entityClass('App\Model\Entity\Municipio');
+        $this->entityClass('App\Model\Entity\Perfil');
 
-        $this->hasMany('Usuarios', [
-            'foreignKey' => 'municipio_id'
+        /*$this->belongsToMany('Url', [
+            'foreignKey' => 'perfil_id',
+            'targetTable' => 'urls',
+            'targetForeignKey' => 'url_id',
+            'joinTable' => 'perfis_urls'
+        ]);*/
+        $this->belongsToMany('Usuario', [
+            'className' => 'Usuarios',
+            'foreignKey' => 'perfil_id',
+            'targetForeignKey' => 'usuario_id',
+            'joinTable' => 'perfis_usuarios'
         ]);
     }
 
@@ -50,19 +60,6 @@ class MunicipiosTable extends Table
         $validator
             ->requirePresence('nome', 'create')
             ->notEmpty('nome');
-
-        $validator
-            ->requirePresence('uf', 'create')
-            ->notEmpty('uf');
-
-        $validator
-            ->integer('codi_estd')
-            ->requirePresence('codi_estd', 'create')
-            ->notEmpty('codi_estd');
-
-        $validator
-            ->requirePresence('desc_estd', 'create')
-            ->notEmpty('desc_estd');
 
         return $validator;
     }

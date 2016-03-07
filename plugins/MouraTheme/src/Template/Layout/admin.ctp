@@ -36,6 +36,20 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'MouraThema';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 
+<?php if (isset($varJS)) : ?>
+<script type="text/javascript">
+<?php foreach($varJS as $_var => $_vlr) { echo "\tvar $_var = $_vlr;\n"; } ?>
+</script>
+<?php endif ?>
+
+<?php if (isset($headJquery)) : ?>
+<script type="text/javascript">
+$(document).ready(function() {
+<?php foreach($headJquery as $_l => $_tag) { echo "\t$_tag;\n"; } ?>
+});
+</script>
+<?php endif ?>
+
 </head>
 
 <body>

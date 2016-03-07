@@ -36,10 +36,19 @@ $tituloPagina = isset($tituloPagina) ? $tituloPagina : 'Scrun';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 
-    <script type="text/javascript">
-        var site     = '<?= $this->request->site; ?>';
-        var cadastro = '<?= $this->request->cadastro; ?>';
-    </script>
+<?php if (isset($varJS)) : ?>
+<script type="text/javascript">
+<?php foreach($varJS as $_var => $_vlr) { echo "\tvar $_var = $_vlr;\n"; } ?>
+</script>
+<?php endif ?>
+
+<?php if (isset($headJquery)) : ?>
+<script type="text/javascript">
+$(document).ready(function() {
+<?php foreach($headJquery as $_l => $_tag) { echo "\t$_tag;\n"; } ?>
+});
+</script>
+<?php endif ?>
 
 </head>
 

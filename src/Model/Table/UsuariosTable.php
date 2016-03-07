@@ -14,7 +14,6 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsToMany $Perfis
  */
 class UsuariosTable extends Table {
-
     /**
      * Initialize method
      *
@@ -31,7 +30,7 @@ class UsuariosTable extends Table {
 
         $this->belongsTo('Municipios', [
             'foreignKey' => 'municipio_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT',
         ]);
         $this->belongsToMany('Perfis', [
             'foreignKey' => 'usuario_id',

@@ -18,7 +18,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Perfi[] $perfis
  */
 class Usuario extends Entity {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -39,12 +38,50 @@ class Usuario extends Entity {
     protected $_status_descricao = ['status_descricao'];
 
     /**
+     * Retorna o Esquema
+     *
+     * @return  array;
+     */
+     public function getEsquema() {
+       $esquema = [
+         'id'        => [
+           'titulo'  => 'Código',
+         ],
+         'nome'      => [
+           'titulo'  => 'Nome',
+           'input'   => ['max-length'=>50, 'class'=>'inUsuarioNome inNome'],
+         ],
+         'email'        => [
+           'titulo'  => 'e-mail',
+         ],
+         'municipio_id' => [
+           'titulo'  => 'Código do Município',
+         ],
+         'senha'     => [
+           'titulo'  => 'Senha',
+         ],
+         'status'    => [
+           'titulo'  => 'Status',
+           'options' => [0=>'Desativado', 1=>'Ativado'],
+         ],
+         'criado'    => [
+           'titulo'  => 'Criado',
+         ],
+         'modificado' => [
+           'titulo'  => 'Modificado',
+         ],
+       ];
+       return $esquema;
+     }
+
+    /**
      * Retorna o valor por extenso do campo Status
      *
      * @return  string;
      */
     protected function _getStatusDescricao() {
-        $arrSN = [1=>'Sim', 0=>'Não'];
-        return $arrSN[$this->_properties['status']];
+      $esquema = $this->getEsquema();
+      $arrSN = $esquema['status']['options'];
+      return $arrSN[$this->_properties['status']];
     }
 }

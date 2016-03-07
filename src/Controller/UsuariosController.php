@@ -7,6 +7,22 @@ use App\Controller\AppController;
  * @property \App\Model\Table\UsuariosTable $Usuarios
  */
 class UsuariosController extends AppController {
+
+/**
+ * Exibe a pagina inicial do cadastro de Usuários
+ *
+ * @return  void
+ */
+  public function index() {
+    parent::index();
+    unset($this->request->listFields[array_search('Usuario.municipio_id',$this->request->listFields)]);
+    unset($this->request->listFields[array_search('Usuario.senha',$this->request->listFields)]);
+    unset($this->request->listFields[array_search('Municipio.codi_estd',$this->request->listFields)]);
+    unset($this->request->listFields[array_search('Municipio.desc_estd',$this->request->listFields)]);
+    unset($this->request->listFields[array_search('Perfil.nome',$this->request->listFields)]);
+    $this->request->esquemas['Municipio']['nome']['titulo'] = 'Município';
+  }
+
     /**
      * Exibe a tela de login
      */

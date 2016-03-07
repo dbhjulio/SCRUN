@@ -27,6 +27,8 @@ class MenusTable extends Table
         $this->table('menus');
         $this->displayField('id');
         $this->primaryKey('id');
+        $this->entityClass('App\Model\Entity\Menu');
+        $this->alias('Me');
     }
 
     /**
