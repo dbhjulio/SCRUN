@@ -42,11 +42,12 @@ class Municipio extends Entity
          ],
          'nome'      => [
            'titulo'  => 'Nome',
+           'sort'    => true,
          ],
          'uf'       => [
            'titulo' => 'UF'
          ],
-         'codi_estd'       => [
+         'codi_estd'=> [
            'titulo' => 'Código do Estado'
          ],
          'desc_estd' => [

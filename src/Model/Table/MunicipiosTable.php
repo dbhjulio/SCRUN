@@ -26,7 +26,7 @@ class MunicipiosTable extends Table
         parent::initialize($config);
 
         $this->table('municipios');
-        $this->displayField('id');
+        $this->displayField('nome');
         $this->primaryKey('id');
         $this->entityClass('App\Model\Entity\Municipio');
 

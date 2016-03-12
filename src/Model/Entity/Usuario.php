@@ -50,6 +50,7 @@ class Usuario extends Entity {
          'nome'      => [
            'titulo'  => 'Nome',
            'input'   => ['max-length'=>50, 'class'=>'inUsuarioNome inNome'],
+           'sort'    => true,
          ],
          'email'        => [
            'titulo'  => 'e-mail',
@@ -79,9 +80,9 @@ class Usuario extends Entity {
      *
      * @return  string;
      */
-    protected function _getStatusDescricao() {
+    /*protected function _getStatusDescricao() {
       $esquema = $this->getEsquema();
       $arrSN = $esquema['status']['options'];
       return $arrSN[$this->_properties['status']];
-    }
+    }*/
 }

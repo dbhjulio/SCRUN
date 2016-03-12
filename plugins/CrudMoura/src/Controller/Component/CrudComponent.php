@@ -64,18 +64,26 @@ public function index() {
 		$entidade 		= $this->_Controller->$modelClass->newEntity();
 		$tituloPagina = 'Listando '.$this->_Controller->name;
 		$tituloLista 	= 'Listando '.$this->_Controller->name;
-		$listFields 	= array();
+		$listFields 	= [];
 		$esquemas 		= [];
 		$containers 	= [];
+		$ordem 				= ['Municipios.nome'=>'DESC'];
 		$menu 				= true;
-		$arrNome 			= explode("\\",get_class($entidade));
-		$entidadeName = $arrNome[3];
-		$this->_Controller->viewVars['entidade'] = $entidadeName;
+		$pagina 			= 1;
+		$limite 			= 10;
+		$esquemas[$modelClass] = $entidade->getEsquema();
 
-		// variáveis obrigatórias
-		$prop = [];
-		$prop['contain'] = [];
-		$esquemas[$entidadeName] = $entidade->getEsquema();
+		// configurando a ordem
+		$ordem = isset($this->request->query['sort'])
+			? $this->request->query['sort']
+			: null;
+
+		// configurando a direção
+		$direcao = isset($this->request->query['direction'])
+			? $this->request->query['direction']
+			: 'ASC';
+
+		// recuperando os relacionamentos
 		$associacoes = $this->_Controller->$modelClass->associations()->keys();
 		if (!empty($associacoes)) {
 			foreach($associacoes as $_l => $_associacao) {
@@ -83,16 +91,18 @@ public function index() {
 				$containers[] = $this->_Controller->$modelClass->$associacao->alias();
 				$entidade 	= $this->_Controller->$modelClass->$associacao->newEntity();
 				if (method_exists($entidade,'getEsquema')) {
-					$arrNome 			= explode("\\",get_class($entidade));
-					$entidadeName = $arrNome[3];
-					$esquemas[$entidadeName] = $entidade->getEsquema();
+					$esquemas[$associacao] = $entidade->getEsquema();
 				}
 			}
 		}
 
 		// recuperando a página
-		$this->_Controller->paginate['contain'] = $containers;
-		$this->_Controller->request->data = $this->_Controller->paginate($modelClass);
+		$query = $this->_Controller->$modelClass->find()
+		->contain($containers)
+		->order([$ordem=>$direcao]);
+		$this->_Controller->paginate['limit'] = $limite;
+		$this->_Controller->paginate['page'] 	= $pagina;
+		$this->_Controller->request->data = $this->_Controller->paginate($query);
 
 		// recuperando os campos de exibição
 		foreach($esquemas as $_Model => $_arrCmps) {
